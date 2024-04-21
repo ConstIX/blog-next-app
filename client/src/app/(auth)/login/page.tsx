@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
-import Login from './Login';
+import { Metadata } from 'next'
+import Login from './Login'
 
 export const metadata: Metadata = {
-	title: `Login`,
-};
+	title: `Login`
+}
 
 export default function LoginPage() {
-	return <Login />;
+	return <Login />
 }
