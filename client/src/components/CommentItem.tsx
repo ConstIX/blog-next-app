@@ -1,6 +1,4 @@
-import React from 'react'
-
-const CommentItem: React.FC<{ comment: string, username: string }> = ({ comment, username }) => {
+export default function CommentItem({ comment, username } : Record<string, string>) {
    return (
       <div className='comments__item'>
          <div className="comments__user">
@@ -11,5 +9,3 @@ const CommentItem: React.FC<{ comment: string, username: string }> = ({ comment,
       </div>
    )
 }
-
-export default CommentItem

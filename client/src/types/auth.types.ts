@@ -2,7 +2,7 @@ export interface IUser {
    email: string,
    username: string,
    password: string,
-   posts: any,
+   posts: string[],
    _id: string,
    createdAt: string,
    updatedAt: string

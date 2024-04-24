@@ -123,6 +123,6 @@ export const getComments = async (req, res) => {
 
       res.json(list)
    } catch (error) {
-      res.status(400).json({ message: "Can not get comments!" })
+      res.status(500).json({ message: "Can't get comments!" })
    }
 }

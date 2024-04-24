@@ -1,30 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { IPost } from '@/types/posts.types'
+import Link from 'next/link'
 
-type PostItemType = {
-   comments: string[],
-   createdAt: string,
-   imgUrl: string,
-   text: string,
-   title: string,
-   username: string,
-   views: number,
-   _id: string,
-}
-
-const PostItem: React.FC<PostItemType> = ({ imgUrl, username, createdAt, title, text, views, comments, _id }) => {
+export default function PostItem({ imgUrl, username, createdAt, title, text, views, comments, _id } : IPost) {
+   
    return (
-      <Link to={`/${_id}`} className='home__post post'>
+      <Link href={`/home/${_id}`} className='home__post post'>
          <div className="post__item">
 
-            <div className="post__image">{imgUrl && <img src={`http://localhost:3005/${imgUrl}`} alt="..." />}</div>
+            <div className="post__image">{ imgUrl ? <img src={ `http://localhost:3005/${imgUrl}` } alt="..." /> : '' }</div>
 
             <div className="post__user-date">
                <p>
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z" /></svg>
                   <span>{username}</span>
                </p>
-               <p>{createdAt?.slice(0, 10) || 0}</p>
+               <p>{createdAt.slice(0, 10)}</p>
             </div>
 
             <div className="post__content">
@@ -39,7 +29,7 @@ const PostItem: React.FC<PostItemType> = ({ imgUrl, username, createdAt, title, 
                </p>
                <p>
                   <svg width="18" height="18" viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd"><path d="M12 1c-6.338 0-12 4.226-12 10.007 0 2.05.739 4.063 2.047 5.625l-1.993 6.368 6.946-3c1.705.439 3.334.641 4.864.641 7.174 0 12.136-4.439 12.136-9.634 0-5.812-5.701-10.007-12-10.007zm0 1c6.065 0 11 4.041 11 9.007 0 4.922-4.787 8.634-11.136 8.634-1.881 0-3.401-.299-4.946-.695l-5.258 2.271 1.505-4.808c-1.308-1.564-2.165-3.128-2.165-5.402 0-4.966 4.935-9.007 11-9.007zm-5 7.5c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm5 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm5 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z" /></svg>
-                  <span>{comments?.length || 0}</span>
+                  <span>{comments.length}</span>
                </p>
             </div>
 
@@ -47,5 +37,3 @@ const PostItem: React.FC<PostItemType> = ({ imgUrl, username, createdAt, title, 
       </Link>
    )
 }
-
-export default PostItem

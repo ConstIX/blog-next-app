@@ -1,12 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { IPost } from '@/types/posts.types'
+import Link from 'next/link'
 
-const PostPopular: React.FC<{ title: string, _id: string }> = ({ title, _id }) => {
+export default function PostPopular({ title, _id } : IPost) {
+   
    return (
-      <Link to={`/${_id}`} className='home__popular popular'>
+      <Link href={`/home/${_id}`} className='home__popular popular'>
          <button className="popular__btn btn btn_p"><span>{title}</span></button>
       </Link>
    )
 }
-
-export default PostPopular
