@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en">
+         <head>
+            <link rel="shortcut icon" href="/favicon.png" />
+         </head>
          <Providers>
             <body>
                <Header />
