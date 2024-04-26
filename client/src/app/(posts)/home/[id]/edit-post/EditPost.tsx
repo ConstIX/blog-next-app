@@ -17,7 +17,7 @@ export default function EditPost() {
       queryFn: () => postService.getPostById(id as string)
    })
 
-   const { mutate } = useMutation({
+   const { mutate, isError } = useMutation({
 		mutationKey: ['post', id],
 		mutationFn: (updatedPost: Record<string, string>) => postService.editPost(updatedPost),
       onSuccess() {
@@ -43,6 +43,8 @@ export default function EditPost() {
       if(data !== undefined) setDataPost({ ...dataPost, title: data.title, text: data.text, oldImage: data.imgUrl })
    }, [data])
 
+   if(isError) window.location.reload()
+   
 	return (
       <section className="add-post">
          <div className="container">

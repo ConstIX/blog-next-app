@@ -8,10 +8,12 @@ import { useQuery } from "@tanstack/react-query"
 
 export default function MyPosts() {
 
-   const { data, isLoading } = useQuery({ 
+   const { data, isLoading, isError } = useQuery({ 
       queryKey: ['posts'], 
       queryFn: () => postService.getMyPosts() 
    })
+   
+   if(isError) window.location.reload()
 
 	return (
       <section className='home'>
@@ -19,6 +21,7 @@ export default function MyPosts() {
 
             {
                isLoading ? <div className="home__status">Loading...</div> : 
+               isError ? <div className="home__status">Something went wrong!</div> : 
                data !== undefined && (data[0] === null && data?.length === 1) || data?.length === 0 ? <div className="home__status">No posts!</div> :
 
                <div className="home__body home__body_m">

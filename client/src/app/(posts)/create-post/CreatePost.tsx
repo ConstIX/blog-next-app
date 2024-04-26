@@ -10,7 +10,7 @@ export default function CreatePost() {
    const [dataPost, setDataPost] = useState<{ title: string, text: string, image: any }>({ title: '', text: '', image: '' })
    const { push } = useRouter()
 
-   const { mutate } = useMutation({
+   const { mutate, isError } = useMutation({
 		mutationKey: ['auth'],
 		mutationFn: (data: Record<string, string>) => postService.createPosts(data),
 		onSuccess() {
@@ -30,6 +30,8 @@ export default function CreatePost() {
          console.log(error)
       }
    }
+
+   if(isError) window.location.reload()
 
 	return (
       <section className="add-post">

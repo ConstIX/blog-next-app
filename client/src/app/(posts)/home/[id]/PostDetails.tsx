@@ -54,6 +54,8 @@ export default function PostDetails() {
       setComment('')
    }
 
+   if(createComment.isError || deletePost.isError) window.location.reload()
+
 	return (
       <section className='single'>
          <div className="container">

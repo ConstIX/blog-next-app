@@ -25,7 +25,12 @@ export default function Header() {
    useEffect(() => {
       if (menu) document.body.classList.add('lock')
       else document.body.classList.remove('lock')
-    }, [menu])
+   }, [menu])
+
+   useEffect(() => {
+      const token = window.localStorage.getItem('token')
+      if(!token) push('/login')
+   }, [])
 
    return (
       <>
